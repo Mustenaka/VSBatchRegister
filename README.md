@@ -34,6 +34,20 @@
 
 ![error](Img/error.png)
 
+### 技术栈选型
+
+| 名字                                | 介绍           | 版本   |
+| ----------------------------------- | -------------- | ------ |
+| AntdUI                              | UI库           | 1.8.8  |
+| log4net                             | 日志库         | 3.0.3  |
+| Microsoft.EntityFrameworkCore       | EF框架核心层   | 8.0.11 |
+| Microsoft.EntityFrameworkCore.Tools | EF框架工具层   | 8.0.11 |
+| MySql.Data                          | MYSQL链接      | 9.2    |
+| Pomelo.EntityFrameworkCore.MySql    | EF-MYSQL中间层 | 2.7.2  |
+| NPOI                                | Excel交互库    | 8.0.2  |
+
+注意，EF-Mysql由第三方提供，其只支持 到8.0.x版本，但是EF框架最新版本已经到9.x版本了，两边版本不同步会无法安装，因此EF框架使用8.0.11，其余库关联性不大
+
 ### QA：
 
 1. 为啥不直接用腾讯文档的自动化解决	A: 安全问题，内网项目
