@@ -20,19 +20,19 @@
 
 打开项目后会基于配置自动链接数据库，如成功可看到数据库中用户信息
 
-![1](D:\Work\Code\CSharp\VSBatchRegister\Img\1.png)
+![1](Img\1.png)
 
 点击加载Excel，可以加载教师汇总手机的注册信息登记表，推荐用腾讯文档提供的收集表导出成本地Excel文件。此时显示数据会切换为从Excel读取到的数据内容。
 
-![2](D:\Work\Code\CSharp\VSBatchRegister\Img\2.png)
+![2](Img\2.png)
 
 点击导入数据库，如果成功会有提示
 
-![3](D:\Work\Code\CSharp\VSBatchRegister\Img\3.png)
+![3](Img\3.png)
 
 如果遇到错误，无法链接数据库，则右上角状态栏会标红，提示连接失败
 
-![error](D:\Work\Code\CSharp\VSBatchRegister\Img\error.png)
+![error](Img\error.png)
 
 ### QA：
 
