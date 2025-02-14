@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Src\Business\User\ViewModel\" />
-    <Folder Include="Src\Business\User\Service\" />
   </ItemGroup>
 
   <ItemGroup>

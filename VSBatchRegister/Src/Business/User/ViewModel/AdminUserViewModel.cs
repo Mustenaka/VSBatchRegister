@@ -1,5 +1,6 @@
 ﻿using AntdUI;
 using Microsoft.EntityFrameworkCore;
+using MySqlX.XDevAPI.Common;
 using VSBatchRegister.Business.User.Context;
 using VSBatchRegister.Business.User.Model;
 using VSBatchRegister.Common.ViewModel;
@@ -14,6 +15,7 @@ public class AdminUserViewModel : BaseViewModel
     private readonly AdminUserContextFactory _contextFractory;
     private readonly AdminUserContext _context;
     private AntList<AdminUser>? _adminUsers;
+    private AntList<AdminUser>? _temp;
 
     private bool _isConnectDb;
 
@@ -27,6 +29,19 @@ public class AdminUserViewModel : BaseViewModel
         {
             _adminUsers = value;
             OnPropertyChanged(nameof(AdminUsers));
+        }
+    }
+
+    /// <summary>
+    /// 临时用户信息
+    /// </summary>
+    public AntList<AdminUser>? Temp
+    {
+        get => _temp;
+        set
+        {
+            _temp = value;
+            OnPropertyChanged(nameof(Temp));
         }
     }
 
@@ -48,6 +63,9 @@ public class AdminUserViewModel : BaseViewModel
 
         _context = _contextFractory.CreateDbContext();
 
+        AdminUsers = new AntList<AdminUser>();
+        Temp = new AntList<AdminUser>();
+
         _isConnectDb = false;
     }
 
@@ -61,6 +79,7 @@ public class AdminUserViewModel : BaseViewModel
         {
             var result = await _context.Detail.ToListAsync();
             AdminUsers = new AntList<AdminUser>(result);
+
             _isConnectDb = true;
             return true;
         }
@@ -85,6 +104,30 @@ public class AdminUserViewModel : BaseViewModel
     /// </summary>
     public async void SaveChangesAsync()
     {
+        // check data
+        if (Temp == null || AdminUsers ==null)
+        {
+            return;
+        }
+
+        foreach (var item in Temp)
+        {
+            bool haveSame = false;
+            foreach (var same in AdminUsers)
+            {
+                if (item.SlAccount == same.SlAccount)
+                {
+                    haveSame = true;
+                    break;
+                }
+            }
+
+            if (!haveSame)
+            {
+                _context.Detail.Add(item);
+            }
+        }
+
         await _context.SaveChangesAsync();
     }
 
@@ -93,6 +136,30 @@ public class AdminUserViewModel : BaseViewModel
     /// </summary>
     public void SaveChanges()
     {
+        // check data
+        if (Temp == null || AdminUsers == null)
+        {
+            return;
+        }
+
+        foreach (var item in Temp)
+        {
+            bool haveSame = false;
+            foreach (var same in AdminUsers)
+            {
+                if (item.SlAccount == same.SlAccount)
+                {
+                    haveSame = true;
+                    break;
+                }
+            }
+
+            if (!haveSame)
+            {
+                _context.Detail.Add(item);
+            }
+        }
+
         _context.SaveChanges();
     }
 }

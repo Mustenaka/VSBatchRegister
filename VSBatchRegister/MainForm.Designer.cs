@@ -73,11 +73,12 @@
             // 
             // ServerConnectStatus
             // 
-            ServerConnectStatus.Location = new Point(648, 5);
+            ServerConnectStatus.Dock = DockStyle.Right;
+            ServerConnectStatus.Location = new Point(608, 0);
             ServerConnectStatus.Name = "ServerConnectStatus";
-            ServerConnectStatus.Size = new Size(140, 34);
+            ServerConnectStatus.Size = new Size(192, 45);
             ServerConnectStatus.TabIndex = 2;
-            ServerConnectStatus.Text = "数据库连接中";
+            ServerConnectStatus.Text = "数据库连接中...";
             // 
             // TableMain
             // 

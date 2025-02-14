@@ -1,4 +1,5 @@
 ﻿using NPOI.SS.UserModel;
+using VSBatchRegister.FIO.Excel;
 
 namespace VSBatchRegister.Common.Common.Command.Detail;
 
